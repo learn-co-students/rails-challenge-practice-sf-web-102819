@@ -55,3 +55,8 @@ titles = [
   )
 end
 
+Office.create(company_id: 1, building_id: 1, floor: 1)
+Office.create(company_id: 2, building_id: 1, floor: 2)
+Office.create(company_id: 3, building_id: 1, floor: 4)
+Office.create(company_id: 4, building_id: 1, floor: 5)
+

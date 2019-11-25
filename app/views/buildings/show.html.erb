@@ -1,0 +1,9 @@
+<h1> <%= @building.name %> </h1>
+<h2> Address: <%= @building.address %> </h2>
+<ul>
+    <% @building.companies.each do |comp| %>
+        <li> <%= link_to comp.name, buildings_path %> </li>
+    <% end %>
+</ul>
+
+<h3> Total Building Rent: $<%= @building.total_rent %></h3>
