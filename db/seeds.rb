@@ -1,26 +1,23 @@
 weworks = [
-  {name: "Finsbury Pavement", 
-   country: "UK", 
-   address: "131 Finsbury Pavement",
-   rent_per_floor: 18000,
-   number_of_floors: 8
-  }, 
-  {name: "Chelsea HQ", 
-   country: "US", 
-   address: "29 West 28th Street",
-   rent_per_floor: 20000,
-   number_of_floors: 20
-  }, 
-  {name: "Broadway", 
-   country: "US", 
-   address: "85 Broadway",
-   rent_per_floor: 25000,
-   number_of_floors: 6
-  }
+  { name: "Finsbury Pavement",
+    country: "UK",
+    address: "131 Finsbury Pavement",
+    rent_per_floor: 18000,
+    number_of_floors: 8 },
+  { name: "Chelsea HQ",
+    country: "US",
+    address: "29 West 28th Street",
+    rent_per_floor: 20000,
+    number_of_floors: 20 },
+  { name: "Broadway",
+    country: "US",
+    address: "85 Broadway",
+    rent_per_floor: 25000,
+    number_of_floors: 6 }
 ]
 
 weworks.each do |we|
-  Building.create(we)
+  Building.create!(we)
 end
 
 companies = [
@@ -34,7 +31,7 @@ companies = [
 ]
 
 companies.each do |company|
-  Company.create(name: company)
+  Company.create!(name: company)
 end
 
 titles = [
@@ -47,11 +44,18 @@ titles = [
   "Instructor"
 ]
 
-100.times do 
-  Employee.create(
+100.times do
+  Employee.create!(
     name: Faker::Name.name_with_middle,
     title: titles.sample,
     company: Company.all.sample
   )
 end
 
+10.times do
+  random_building_num = rand((Building.all.first.id)..(Building.all.last.id))
+  random_building = Building.find(random_building_num)
+  random_office = random_building.empty_offices.sample
+  random_office.company_id = rand((Company.all.first.id)..(Company.all.last.id))
+  random_office.save
+end

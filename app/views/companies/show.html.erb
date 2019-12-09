@@ -1,0 +1,23 @@
+
+<h1>
+  <%= @company.name %>
+</h1>
+<h3>
+  Location of other offices:
+</h3>
+  <% @company.offices.map do |f| %>
+  <ul><li>"<%= f.building.name %>" Building, on the <%= f.floor.ordinalize %> Floor. </li></ul>
+  <% end %>
+  <p> <%= %> <p>
+
+<h3>
+  Our Amazing Employees:
+</h3>
+
+<% @company.employees.map do |f| %>
+  <ul><%= f.name %>.</ul>
+  <% end %>
+
+  <p> We are always looking forward to working with great talent!</p>
+  <p> Do you have anyone you'd recommend?</p> 
+    <%=  render partial: "employees/form" %>
