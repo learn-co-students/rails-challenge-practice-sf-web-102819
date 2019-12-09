@@ -1,0 +1,4 @@
+<h1>Building Index Page</h1>
+<% @buildings.each do |building|%>
+<ul><li> <%= link_to building.name, building%></li></ul>
+<% end %>
